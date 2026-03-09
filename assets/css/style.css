@@ -1,0 +1,65 @@
+/* Pagina achtergrond */
+body{
+    background-color: #3b2a1a !important; /* donker aardebruin */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #f2e6d3;
+}
+
+/* Navbar / header */
+.navbar{
+    background-color: #2a1b10 !important; /* donkerder bruin */
+    border-bottom: 3px solid #6e4a2b;
+}
+
+.navbar-brand{
+    color: #f5e6c8 !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+}
+
+/* Welcome kaart */
+#welcome-card{
+    max-width: 750px;
+    border-radius: 16px;
+    background: #e6d3b0; /* zandkleur zoals op de afbeelding */
+    border: 3px solid #6e4a2b;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* Titel */
+#welcome-card h1{
+    color: #4a2f16;
+    font-weight: 700;
+}
+
+/* Tekst */
+#welcome-card p{
+    color: #3b2a1a;
+    line-height: 1.6;
+}
+
+/* Start knop */
+#startBtn{
+    background-color: #7b4f2c;
+    border: none;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+}
+
+#startBtn:hover{
+    background-color: #5a371d;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer{
+    background-color: #2a1b10;
+    border-top: 3px solid #6e4a2b;
+}
+
+footer small{
+    color: #f5e6c8;
+}
