@@ -1,67 +1,59 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <title>Veluwse heuvels</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <link rel="stylesheet" href="assets/css/style.css">
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-    </head>
+<html lang="nl">
+<head>
+    <title>Veluwse heuvels</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    
+    <!-- Eigen CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-light">
-                <div class="container">
-                    <a class="navbar-brand" href="index.html">Veluwse heuvels</a>
-                </div>
-            </nav>
-            
-        </header>
-        <main class="container py-4 d-flex align-items-center justify-content-center" style="min-height: 80vh;">
-            <div class="card border-0 shadow-sm" id="welcome-card">
-                <div class="card-body p-5 text-center">
-                    <h1 class="card-title display-4 mb-4">Welkom!</h1>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
 
-                    <p class="card-text fs-5 mb-4">
-                        In deze opdracht ga je een digitale schoolplaat onderzoeken over de eerste boeren en hun grafheuvelrituelen. Op de afbeelding zie je hoe mensen duizenden jaren geleden leefden. Werkten samen en hadden speciale rituelen wanneer iemand stierf.
-                        Op de schoolplaat zijn veel verschillende dingen te ontdekken. Door goed te kijken en de informatie te openen, leer je meer over het dagelijks leven van de eerste boeren en hoe zij hun doden begroeven.
-                        Klik op de verschillende onderdelen in de afbeelding, bekijk de informatie en ontdek stap voor stap het verhaal achter deze prehistorische plek. 🕵️‍♂️
-                    </p>
-
-                    <button class="btn btn-primary w-100 mb-3" id="startBtn" type="button">
-                        START
-                    </button>
-
-                    <small class="text-muted d-block" style="font-weight: 600;">Klik op START om door te gaan</small>
-                </div>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar veluwe-navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-tree-fill"></i> Veluwse heuvels
+                </a>
             </div>
-        </main>
-        <footer>
-             <div class="container-fluid text-center py-4">
-                <small>&copy; 2026 Veluwse heuvels project</small>
-            </div>
-        </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
+        </nav>
+    </header>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-    </body>
+    <!-- Welkomstkaart -->
+    <main class="container py-4 d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+        <div class="card border-0 shadow-sm" id="welcome-card">
+            <div class="card-body p-5 text-center">
+                <h1 class="card-title display-4 mb-4">Welkom!</h1>
+                <p class="card-text fs-5 mb-4">
+                    Ga op ontdekkingstocht in een digitale schoolplaat over de eerste boeren!<br>
+                    Kijk goed naar de afbeelding. Hoe leefden mensen vroeger? Wat gebeurde er als iemand stierf?<br>
+                    Klik op de verschillende plekken en ontdek het verhaal achter deze bijzondere plek. 🕵️‍♂️
+                </p>
+
+                <a href="pages/plaat.html" class="btn btn-primary w-100 mb-3" id="startBtn">
+                    START
+                </a>
+
+                <small class="text-muted d-block" style="font-weight: 600;">Klik op START om door te gaan</small>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid text-center">
+            <small>&copy; 2026 Veluwse heuvels project</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
 </html>

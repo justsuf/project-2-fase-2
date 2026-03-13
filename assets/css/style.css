@@ -1,65 +1,104 @@
-/* Pagina achtergrond */
-body{
-    background-color: #3b2a1a !important; /* donker aardebruin */
+/* Algemene achtergrond */
+body {
+    background-color: #d9c4a7; /* lichtbruine Veluwe/zandkleur */
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: #f2e6d3;
+    color: #3b2a1a;
+    margin: 0;
+    padding: 0;
 }
 
 /* Navbar / header */
-.navbar{
-    background-color: #2a1b10 !important; /* donkerder bruin */
-    border-bottom: 3px solid #6e4a2b;
+.veluwe-navbar {
+    background: linear-gradient(rgba(42,27,16,0.95), rgba(42,27,16,0.95)),
+                url("../images/wood-texture.jpg");
+    background-size: cover;
+    background-position: center;
+    border-bottom: 4px solid #7a5230;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    padding: 0.5rem 1rem;
 }
 
-.navbar-brand{
+.navbar-brand {
     color: #f5e6c8 !important;
-    font-weight: 700;
+    font-weight: 900;
     letter-spacing: 1px;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
 }
 
-/* Welcome kaart */
-#welcome-card{
+.navbar-brand i {
+    color: #9bbf6b;
+    margin-right: 10px;
+    font-size: 1.4rem;
+}
+
+.navbar-brand:hover {
+    color: #ffffff !important;
+    transform: scale(1.05);
+}
+
+.navbar-brand:hover i {
+    color: #c4f07a;
+}
+
+/* Welkomstkaart */
+#welcome-card {
     max-width: 750px;
-    border-radius: 16px;
-    background: #e6d3b0; /* zandkleur zoals op de afbeelding */
+    border-radius: 20px;
+    background: #f5e1c1; /* iets lichter zandkleur */
     border: 3px solid #6e4a2b;
     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Titel */
-#welcome-card h1{
+#welcome-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+}
+
+#welcome-card h1 {
     color: #4a2f16;
     font-weight: 700;
 }
 
-/* Tekst */
-#welcome-card p{
+#welcome-card p {
     color: #3b2a1a;
     line-height: 1.6;
 }
 
 /* Start knop */
-#startBtn{
+#startBtn {
     background-color: #7b4f2c;
     border: none;
     font-weight: 700;
-    padding: 12px;
-    border-radius: 10px;
+    padding: 14px;
+    border-radius: 12px;
     transition: all 0.25s ease;
 }
 
-#startBtn:hover{
+#startBtn:hover {
     background-color: #5a371d;
     transform: scale(1.05);
 }
 
-/* Footer */
-footer{
+/* Footer fixed onderaan */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background-color: #2a1b10;
     border-top: 3px solid #6e4a2b;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    padding: 1rem 0;
 }
 
-footer small{
+footer small {
     color: #f5e6c8;
+}
+
+/* Main padding onder footer */
+main {
+    padding-bottom: 100px; /* voorkomt overlap met fixed footer */
 }
