@@ -1,0 +1,26 @@
+.storyline-body {
+    min-height: 100vh;
+}
+
+/* .storyline-main {
+
+} */
+
+.storyline-btn-left {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.storyline-btn-right {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.storyline-title-bar {
+    width: 70%;
+}
+
