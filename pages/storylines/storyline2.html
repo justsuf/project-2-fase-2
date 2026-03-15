@@ -18,7 +18,7 @@
         &lt;&gt;
     </button>
 
-    <button id="btn-prev" class="storyline-btn-right">
+    <button id="btn-next" class="storyline-btn-right">
         &lt;&gt;
     </button>
 
@@ -39,24 +39,33 @@
 
     <!-- MAIN -->
     <main class="storyline-main container-fluid flex-grow-1 d-flex align-items-stretch px-5 py-3">
-        <div class="border w-100 p-3">
-            <div class="row h-100">
-                
-                <!-- Linker tekst -->
+        <div class="border w-100 p-3 mb-5">
+            <!-- ACTIVITY 1: Lezen (visible on load) -->
+            <div id="activity-1" class="row h-100">
                 <div class="col-8 border-end">
                     <p>Tekst placeholder</p>
                 </div>
-
-                <!-- Rechter plaatjes -->
                 <div class="col-4 d-flex flex-column gap-3">
                     <div class="bg-light border flex-fill d-flex align-items-center justify-content-center">
-                        <img #> <!-- Afbeelding nog plaatsen !! -->
-                        <span class="text-muted">Afbeelding 1</span>
+                        <img src="https://placehold.co/300x200" alt="Afbeelding 1" class="img-fluid rounded">
                     </div>
                     <div class="bg-light border flex-fill d-flex align-items-center justify-content-center">
-                        <img #> <!-- Afbeelding nog plaatsen !! -->
-                        <span class="text-muted">Afbeelding 2</span>
+                        <img src="https://placehold.co/300x200" alt="Afbeelding 2" class="img-fluid rounded">
                     </div>
+                </div>
+            </div>
+
+            <!-- ACTIVITY 2: Video (hidden on load) -->
+            <div id="activity-2" class="row h-100 d-none">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <p>Video komt hier</p>
+                </div>
+            </div>
+
+            <!-- ACTIVITY 3: Spel (hidden on load) -->
+            <div id="activity-3" class="row h-100 d-none">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <p>Spel komt hier</p>
                 </div>
             </div>
         </div>
@@ -68,6 +77,7 @@
         </div>
     </footer>
 
+    <script src="../../js/storylines/story-nav.js"></script>
 </body>
 </html>
 

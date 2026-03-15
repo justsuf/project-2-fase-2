@@ -2,9 +2,9 @@
     min-height: 100vh;
 }
 
-/* .storyline-main {
-
-} */
+.storyline-main {
+min-height: 0;
+}
 
 .storyline-btn-left {
     position: fixed;
