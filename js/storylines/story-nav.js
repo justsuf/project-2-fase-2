@@ -1,5 +1,5 @@
 // alle divs van activiteiten in de goede volgorde
-const activities = ['activity-1','activity-2','activity-3'];
+const activities = ['activity-1','activity-2','activity-3','activity-4'];
 
 // Huidige activiteit bijhouden (standaard/begin index 0)
 let current = 0;
@@ -22,6 +22,11 @@ function showActivity(index) {
         btnPrev.classList.add('d-none');
     } else {
         btnPrev.classList.remove('d-none');
+    }
+
+    // quiz initialiseren wanneer activiteit 4 wordt weergeven
+    if (index === 3) {
+        initQuiz();
     }
 }
 

@@ -68,6 +68,36 @@
                     <p>Spel komt hier</p>
                 </div>
             </div>
+            <div id="activity-4" class="row h-100 d-none">
+
+            <!-- STATE 1: Question -->
+            <div id="quiz-question" class="col-12 d-flex flex-column align-items-center justify-content-center">
+                <p id="question-counter" class="text-muted">Vraag 1 van 5</p>
+                <h4 id="question-text" class="mb-4 text-center">Vraag komt hier</h4>
+                <div id="answer-options" class="d-flex flex-column gap-2 w-50">
+                    <!-- Answer buttons injected by JS -->
+                </div>
+            </div>
+
+            <!-- STATE 2: Results (hidden) -->
+            <div id="quiz-results" class="col-12 d-flex flex-column align-items-center justify-content-center d-none">
+                <h3>Resultaat</h3>
+                <p id="results-text" class="fs-5 my-3"></p>
+                <button class="btn btn-primary" id="btn-to-choice">Volgende →</button>
+            </div>
+
+            <!-- STATE 3: Choice (hidden) -->
+            <div id="quiz-choice" class="col-12 d-flex flex-column align-items-center justify-content-center gap-3 d-none">
+                <h3>Wat wil je doen?</h3>
+                <button class="btn btn-success w-25" id="btn-replay">
+                    🔍 Blijf verkennen
+                </button>
+                <a href="../plaat.html" class="btn btn-outline-secondary w-25">
+                    🗺️ Terug naar de kaart
+                </a>
+            </div>
+
+</div>
         </div>
     </main>
 
@@ -78,6 +108,9 @@
     </footer>
 
     <script src="../../js/storylines/story-nav.js"></script>
+    <script src="../../js/storylines/storyline2.js"></script> <!-- CORRECTE FILE LINKEN!!! -->
+    <script src="../../js/storylines/story-quiz.js"></script>
+
 </body>
 </html>
 
