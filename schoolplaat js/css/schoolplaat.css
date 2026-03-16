@@ -1,0 +1,37 @@
+body{
+  margin:0;
+  overflow:hidden;
+}
+
+#viewer{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+  cursor: grab;
+}
+
+#schoolplaat{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  transform-origin: 0 0;
+}
+
+.zoomButtons{
+  position:absolute;
+  top:20px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  z-index:10;
+}
+
+.zoomButtons button{
+  width:45px;
+  height:45px;
+  font-size:22px;
+  margin-bottom:5px;
+  cursor:pointer;
+}
