@@ -1,1 +1,115 @@
 <!-- Mike -->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Verhaal # | Veluwse heuvels</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no " />
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/storylinestyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+    <body class="d-flex flex-column storyline-body">
+
+    <!-- Linker en rechter knop -->
+    <button id="btn-prev" class="storyline-btn-left">
+        &lt;&gt;
+    </button>
+
+    <button id="btn-next" class="storyline-btn-right">
+        &lt;&gt;
+    </button>
+
+    <header>
+        <nav class="navbar veluwe-navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../index.html">
+                    <i class="bi bi-tree-fill"></i> Veluwse heuvels
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Titel verhaallijn -->
+    <div class="storyline-title-bar text-center py-2 border mx-auto mt-3">
+        <h1 class="h4 mb-0">Verhaallijn titel</h1>
+    </div>
+
+    <!-- MAIN -->
+    <main class="storyline-main container-fluid flex-grow-1 d-flex align-items-stretch px-5 py-3">
+        <div class="border w-100 p-3 mb-5">
+            <!-- Activiteit 1: Tekst -->
+            <div id="activity-1" class="row h-100">
+                <div class="col-8 border-end">
+                    <p>Tekst placeholder</p>
+                </div>
+                <div class="col-4 d-flex flex-column gap-3">
+                    <div class="bg-light border flex-fill d-flex align-items-center justify-content-center">
+                        <img src="https://placehold.co/300x200" alt="Afbeelding 1" class="img-fluid rounded">
+                    </div>
+                    <div class="bg-light border flex-fill d-flex align-items-center justify-content-center">
+                        <img src="https://placehold.co/300x200" alt="Afbeelding 2" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activiteit 2: Video -->
+            <div id="activity-2" class="row h-100 d-none">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <p>Video komt hier</p>
+                </div>
+            </div>
+
+            <!-- Activiteit 3: Spel -->
+            <div id="activity-3" class="row h-100 d-none">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <p>Spel komt hier</p>
+                </div>
+            </div>
+            <div id="activity-4" class="row h-100 d-none">
+
+            <!-- Vragen quiz -->
+            <div id="quiz-question" class="col-12 d-flex flex-column align-items-center justify-content-center">
+                <p id="question-counter" class="text-muted">Vraag 1 van 5</p>
+                <h4 id="question-text" class="mb-4 text-center">Vraag komt hier</h4>
+                <div id="answer-options" class="d-flex flex-column gap-2 w-50">
+                    <!-- Answer buttons injected by JS -->
+                </div>
+            </div>
+
+            <!-- Resultaten quiz -->
+            <div id="quiz-results" class="col-12 d-flex flex-column align-items-center justify-content-center d-none">
+                <h3>Resultaat</h3>
+                <p id="results-text" class="fs-5 my-3"></p>
+                <button class="btn btn-primary" id="btn-to-choice">Volgende →</button>
+            </div>
+
+            <!-- Keuze blijf verkennen of terug naar plaat -->
+            <div id="quiz-choice" class="col-12 d-flex flex-column align-items-center justify-content-center gap-3 d-none">
+                <h3>Wat wil je doen?</h3>
+                <button class="btn btn-success w-25" id="btn-replay">
+                    🔍 Blijf verkennen
+                </button>
+                <a href="../plaat.html" class="btn btn-outline-secondary w-25">
+                    🗺️ Terug naar de kaart
+                </a>
+            </div>
+
+</div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container-fluid text-center">
+            <small>&copy; 2026 Veluwse heuvels project</small>
+        </div>
+    </footer>
+
+    <script src="../../js/storylines/story-nav.js"></script>
+    <script src="../../js/storylines/storyline4.js"></script> <!-- CORRECTE FILE LINKEN!!! -->
+    <script src="../../js/storylines/story-quiz.js"></script>
+
+</body>
+</html>
