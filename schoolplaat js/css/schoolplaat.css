@@ -1,37 +1,57 @@
-body{
-  margin:0;
-  overflow:hidden;
+/* Fullscreen body */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
-#viewer{
-  position:relative;
-  width:100vw;
-  height:100vh;
-  overflow:hidden;
-  cursor: grab;
-}
-
-#schoolplaat{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
+/* Container voor de schoolplaat */
+#plaat-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url(/Assets/schoolplaatlowres.png); /* je tekening */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  touch-action: none; /* voorkomt standaard pinch scroll gedrag */
   transform-origin: 0 0;
 }
 
-.zoomButtons{
-  position:absolute;
-  top:20px;
-  right:20px;
-  display:flex;
-  flex-direction:column;
-  z-index:10;
+/* Vergrootglas iconen */
+.vergrootglas {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  font-size: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  border: 2px solid #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
-.zoomButtons button{
-  width:45px;
-  height:45px;
-  font-size:22px;
-  margin-bottom:5px;
-  cursor:pointer;
+/* Popup scherm */
+.popup {
+  position: absolute;
+  background-color: white;
+  border: 2px solid #333;
+  padding: 15px;
+  width: 500px;
+  block-size: 500px;
+  display: none;
+  z-index: 10;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.popup-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-weight: bold;
 }

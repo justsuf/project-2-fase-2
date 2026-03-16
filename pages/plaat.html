@@ -1,19 +1,25 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="nl">
 <head>
-<title>Schoolplaat</title>
-<meta charset="utf-8">
-
-<link rel="stylesheet" href="../schoolplaat js/css/schoolplaat.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactieve Grafheuvels Schoolplaat</title>
+  <link rel="stylesheet" href="../schoolplaat js/css/schoolplaat.css">
 </head>
-
 <body>
 
-<div id="zoom">
-    <img src="../Assets/schoolplaatlowres.png" id="schoolplaat">
+<div id="plaat-container">
+  <!-- Vergrootglazen -->
+  <div class="vergrootglas" style="top: 1150px; left: 4000px;" data-info="Dit is grafheuvel 1">🔍</div>
+  <div class="vergrootglas" style= "top: 1330px; left: 1700px;" data-info="Dit is grafheuvel 2">🔍</div>
+</div>
+
+<!-- Popup element -->
+<div class="popup" id="popup">
+  <span class="popup-close" id="popup-close">✖</span>
+  <div id="popup-content"></div>
 </div>
 
 <script src="../schoolplaat js/css/schoolplaat.js"></script>
-
 </body>
 </html>
