@@ -1,4 +1,5 @@
-// Zoom en pan variabelen
+document.addEventListener("DOMContentLoaded", () => {
+
 let scale = 1;
 let originX = 0;
 let originY = 0;
@@ -12,19 +13,32 @@ const popup = document.getElementById('popup');
 const popupContent = document.getElementById('popup-content');
 const popupClose = document.getElementById('popup-close');
 
-
-// Zoom met muiswiel
-container.addEventListener('wheel', (e) => {
-  e.preventDefault();
-  const zoomFactor = 0.1;
-  const delta = e.deltaY < 0 ? 1 + zoomFactor : 1 - zoomFactor;
-  scale *= delta;
-  scale = Math.min(Math.max(scale, 1), 5);
+function applyTransform() {
   container.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
   updateVergrootglazen();
+}
+
+function updateVergrootglazen() {
+  vergrootglazen.forEach(v => {
+    v.style.transform = `scale(${1 / scale})`;
+    v.style.transformOrigin = 'center';
+  });
+}
+
+// Zoom
+container.addEventListener('wheel', (e) => {
+  e.preventDefault();
+
+  const zoomFactor = 0.1;
+  const delta = e.deltaY < 0 ? 1 + zoomFactor : 1 - zoomFactor;
+
+  scale *= delta;
+  scale = Math.min(Math.max(scale, 1), 5);
+
+  applyTransform();
 });
 
-// Drag voor pannen (muis)
+// Drag
 container.addEventListener('mousedown', (e) => {
   isDragging = true;
   startX = e.clientX - originX;
@@ -33,15 +47,18 @@ container.addEventListener('mousedown', (e) => {
 
 document.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
+
   originX = e.clientX - startX;
   originY = e.clientY - startY;
-  container.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
-  updateVergrootglazen();
+
+  applyTransform();
 });
 
-document.addEventListener('mouseup', () => { isDragging = false; });
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
 
-// Touch support (pinch + drag)
+// Touch
 let initialDistance = 0;
 let initialScale = 1;
 
@@ -61,38 +78,46 @@ container.addEventListener('touchstart', (e) => {
 
 container.addEventListener('touchmove', (e) => {
   e.preventDefault();
+
   if (e.touches.length === 2) {
     const distance = Math.hypot(
       e.touches[0].clientX - e.touches[1].clientX,
       e.touches[0].clientY - e.touches[1].clientY
     );
+
     scale = initialScale * (distance / initialDistance);
     scale = Math.min(Math.max(scale, 1), 5);
   } else if (e.touches.length === 1 && isDragging) {
     originX = e.touches[0].clientX - startX;
     originY = e.touches[0].clientY - startY;
   }
-  container.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
-  updateVergrootglazen();
+
+  applyTransform();
 });
 
-container.addEventListener('touchend', (e) => { if (e.touches.length === 0) isDragging = false; });
+container.addEventListener('touchend', (e) => {
+  if (e.touches.length === 0) isDragging = false;
+});
 
-// Klik op vergrootglas
+
 vergrootglazen.forEach(v => {
-  v.addEventListener('click', () => {
+  v.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+
     popupContent.innerText = v.dataset.info;
     popup.style.display = 'block';
 
-    // Plaats popup boven vergrootglas
     const rect = v.getBoundingClientRect();
-    popup.style.left = rect.left + window.scrollX + 10 + 'px';
-    popup.style.top = rect.top + window.scrollY + 10 + 'px';
+    popup.style.left = rect.left + window.scrollX + 'px';
+    popup.style.top = rect.top + window.scrollY + 'px';
   });
 });
 
-// Sluit popup
-popupClose.addEventListener('click', () => { popup.style.display = 'none'; });
+popupClose.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
 
-// Init: vergrootglazen op startpositie
+// Init
 updateVergrootglazen();
+
+});
