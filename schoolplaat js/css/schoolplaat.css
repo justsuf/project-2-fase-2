@@ -10,7 +10,7 @@ html, body {
   height: 100%;
   position: relative;
   background-image: url("../css/schoolplaatlowres.png"); 
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transform-origin: 0 0;
