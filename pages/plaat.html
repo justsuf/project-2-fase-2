@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactieve Grafheuvels Schoolplaat</title>
+  <title>Interactieve Schoolplaat</title>
   <link rel="stylesheet" href="../schoolplaat js/css/schoolplaat.css">
 </head>
 <body>
 
-<div id="plaat-container">
-  <div class="vergrootglas" style="top: 325px; left: 450px;" data-info="De speld">🔍</div>
-  <div class="vergrootglas" style="top: 300px; left: 1000px;" data-info="Dit is een grafheuvel ">🔍</div>
-  <div class="vergrootglas" style="top: 380px; left: 700px;" data-info="het ritueel">🔍</div>
+<div id="plaat-wrapper">
+  <div id="plaat-container">
+    <div class="vergrootglas" style="top: 40%; left: 55%;" data-info="De speld">🔍</div>
+    <div class="vergrootglas" style="top: 35%; left: 75%;" data-info="Dit is een grafheuvel">🔍</div>
+    <div class="vergrootglas" style="top: 48%; left: 65%;" data-info="Het ritueel">🔍</div>
+  </div>
 </div>
 
 <div class="popup" id="popup">
@@ -19,8 +21,6 @@
   <div id="popup-content"></div>
 </div>
 
-
 <script src="../schoolplaat js/css/schoolplaat.js"></script>
-
 </body>
 </html>
