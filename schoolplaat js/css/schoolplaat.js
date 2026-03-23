@@ -11,7 +11,6 @@ const container = document.getElementById('plaat-container');
 const vergrootglazen = document.querySelectorAll('.vergrootglas');
 const popup = document.getElementById('popup');
 const popupContent = document.getElementById('popup-content');
-const popupClose = document.getElementById('popup-close');
 
 function applyTransform() {
   container.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
@@ -105,7 +104,7 @@ vergrootglazen.forEach(v => {
     e.stopPropagation(); 
 
     popupContent.innerText = v.dataset.info;
-    popup.style.display = 'block';
+    popup.classList.add('visible');
 
     const rect = v.getBoundingClientRect();
     popup.style.left = rect.left + window.scrollX + 'px';
@@ -113,9 +112,15 @@ vergrootglazen.forEach(v => {
   });
 });
 
-popupClose.addEventListener('click', () => {
-  popup.style.display = 'none';
+document.addEventListener('click', (e) => {
+  if (isPopupOpen() && !popup.contains(e.target)) {
+    popup.classList.remove('visible');
+  }
 });
+
+function isPopupOpen() {
+  return popup.classList.contains('visible');
+}
 
 // Init
 updateVergrootglazen();
