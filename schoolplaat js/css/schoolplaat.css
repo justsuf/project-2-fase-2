@@ -6,48 +6,56 @@ html, body {
   background-color: #333;
 }
 
+
 #plaat-wrapper {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
   cursor: grab;
+  touch-action: none; 
 }
+
 
 #plaat-container {
   position: absolute;
   top: 0;
   left: 0;
-
-
-
-  /* Minimaal scherm vullen, niet kleiner dan viewport */
-  min-width: 100vw;
-  min-height: 100vh;
-
-  background-image: url("grafheuvelsfoto.jpg"); 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
   transform-origin: 0 0;
+  will-change: transform; 
 }
+
+#plaat-img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  pointer-events: none; 
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 
 .vergrootglas {
   position: absolute;
   width: 35px;
   height: 35px;
   font-size: 15px;
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.8);
   border-radius: 50%;
   border: 2px solid #333;
   cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 5;
   pointer-events: auto;
+
+  will-change: transform; 
 }
+
 
 .popup {
   position: absolute;
@@ -57,6 +65,8 @@ html, body {
   width: 300px;
   display: none;
   z-index: 10;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .popup-close {
