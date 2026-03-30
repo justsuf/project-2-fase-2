@@ -135,25 +135,25 @@ wrapper.addEventListener('wheel', (e) => {
     const rect = container.getBoundingClientRect();
     const prevScale = scale;
 
-    // Pinch afstand
+
     const dist = Math.hypot(
       e.touches[0].clientX - e.touches[1].clientX,
       e.touches[0].clientY - e.touches[1].clientY
     );
 
-    // Bereken schaal
+    
     scale = startScale * (dist / startDist);
     scale = Math.max(minScale, Math.min(maxScale, scale));
 
-    // Vind pinch midpoint
+   
     const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
     const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
 
-    // Relatief tot container
+   
     const cursorX = midX - rect.left;
     const cursorY = midY - rect.top;
 
-    // Pas offset aan zodat pinch zoom rond midpoint blijft
+
     offsetX -= (cursorX) * (scale - prevScale) / scale;
     offsetY -= (cursorY) * (scale - prevScale) / scale;
 
