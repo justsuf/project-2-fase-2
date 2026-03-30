@@ -129,27 +129,45 @@ wrapper.addEventListener('wheel', (e) => {
   });
 
   wrapper.addEventListener('touchmove', (e) => {
-    if (e.touches.length === 2) {
-      e.preventDefault();
+  if (e.touches.length === 2) {
+    e.preventDefault();
 
-      const dist = Math.hypot(
-        e.touches[0].clientX - e.touches[1].clientX,
-        e.touches[0].clientY - e.touches[1].clientY
-      );
+    const rect = container.getBoundingClientRect();
+    const prevScale = scale;
 
-      scale = startScale * (dist / startDist);
-      scale = Math.max(minScale, Math.min(maxScale, scale));
+    // Pinch afstand
+    const dist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
 
-      requestUpdate();
+    // Bereken schaal
+    scale = startScale * (dist / startDist);
+    scale = Math.max(minScale, Math.min(maxScale, scale));
 
-    } else if (isDragging && e.touches.length === 1) {
-      offsetX = e.touches[0].clientX - startX;
-      offsetY = e.touches[0].clientY - startY;
+    // Vind pinch midpoint
+    const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
 
-      constrain();
-      requestUpdate();
-    }
-  }, { passive: false });
+    // Relatief tot container
+    const cursorX = midX - rect.left;
+    const cursorY = midY - rect.top;
+
+    // Pas offset aan zodat pinch zoom rond midpoint blijft
+    offsetX -= (cursorX) * (scale - prevScale) / scale;
+    offsetY -= (cursorY) * (scale - prevScale) / scale;
+
+    constrain();
+    requestUpdate();
+
+  } else if (isDragging && e.touches.length === 1) {
+    offsetX = e.touches[0].clientX - startX;
+    offsetY = e.touches[0].clientY - startY;
+
+    constrain();
+    requestUpdate();
+  }
+}, { passive: false });
 
   wrapper.addEventListener('touchend', () => {
     isDragging = false;
