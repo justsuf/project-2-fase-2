@@ -86,6 +86,8 @@ wrapper.addEventListener('wheel', (e) => {
   wrapper.addEventListener('mousedown', (e) => {
     if (scale <= 1) return;
 
+    popup.classList.remove('visible');
+
     isDragging = true;
     startX = e.clientX - offsetX;
     startY = e.clientY - offsetY;
@@ -122,6 +124,7 @@ wrapper.addEventListener('wheel', (e) => {
       );
       startScale = scale;
     } else if (e.touches.length === 1 && scale > 1) {
+      popup.classList.remove('visible');
       isDragging = true;
       startX = e.touches[0].clientX - offsetX;
       startY = e.touches[0].clientY - offsetY;
