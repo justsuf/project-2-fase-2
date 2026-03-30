@@ -1,128 +1,144 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-let scale = 1;
-let originX = 0;
-let originY = 0;
-let startX = 0;
-let startY = 0;
-let isDragging = false;
+  const container = document.getElementById('plaat-container');
+  const wrapper = document.getElementById('plaat-wrapper');
+  const vergrootglazen = document.querySelectorAll('.vergrootglas');
 
-const container = document.getElementById('plaat-container');
-const vergrootglazen = document.querySelectorAll('.vergrootglas');
-const popup = document.getElementById('popup');
-const popupContent = document.getElementById('popup-content');
+  let scale = 1;
+  const minScale = 1;
+  const maxScale = 4;
 
-function applyTransform() {
-  container.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
-  updateVergrootglazen();
-}
+  let offsetX = 0;
+  let offsetY = 0;
 
-function updateVergrootglazen() {
-  vergrootglazen.forEach(v => {
-    v.style.transform = `scale(${1 / scale})`;
-    v.style.transformOrigin = 'center';
-  });
-}
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
 
-// Zoom
-container.addEventListener('wheel', (e) => {
-  e.preventDefault();
+  let ticking = false;
 
-  const zoomFactor = 0.1;
-  const delta = e.deltaY < 0 ? 1 + zoomFactor : 1 - zoomFactor;
+  function update() {
+    container.style.transform =
+      `translate3d(${offsetX}px, ${offsetY}px, 0) scale(${scale})`;
 
-  scale *= delta;
-  scale = Math.min(Math.max(scale, 1), 5);
+    vergrootglazen.forEach(v => {
+      v.style.transform = `scale(${1 / scale})`;
+    });
 
-  applyTransform();
-});
+    ticking = false;
+  }
 
-// Drag
-container.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  startX = e.clientX - originX;
-  startY = e.clientY - originY;
-});
+  function requestUpdate() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
 
-document.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
+  function constrain() {
+    const rect = container.getBoundingClientRect();
+    const w = wrapper.clientWidth;
+    const h = wrapper.clientHeight;
 
-  originX = e.clientX - startX;
-  originY = e.clientY - startY;
+    const minX = Math.min(0, w - rect.width);
+    const minY = Math.min(0, h - rect.height);
 
-  applyTransform();
-});
+    offsetX = Math.max(minX, Math.min(0, offsetX));
+    offsetY = Math.max(minY, Math.min(0, offsetY));
+  }
 
-document.addEventListener('mouseup', () => {
-  isDragging = false;
-});
 
-// Touch
-let initialDistance = 0;
-let initialScale = 1;
+  wrapper.addEventListener('wheel', (e) => {
+    e.preventDefault();
 
-container.addEventListener('touchstart', (e) => {
-  if (e.touches.length === 2) {
-    initialDistance = Math.hypot(
-      e.touches[0].clientX - e.touches[1].clientX,
-      e.touches[0].clientY - e.touches[1].clientY
-    );
-    initialScale = scale;
-  } else if (e.touches.length === 1) {
+    const zoomIntensity = 0.002;
+    const delta = -e.deltaY * zoomIntensity;
+
+    const prevScale = scale;
+    scale += delta;
+    scale = Math.max(minScale, Math.min(maxScale, scale));
+
+    const rect = container.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    offsetX -= (mx / prevScale - mx / scale);
+    offsetY -= (my / prevScale - my / scale);
+
+    constrain();
+    requestUpdate();
+  }, { passive: false });
+
+ 
+  wrapper.addEventListener('mousedown', (e) => {
+    if (scale <= 1) return;
+
     isDragging = true;
-    startX = e.touches[0].clientX - originX;
-    startY = e.touches[0].clientY - originY;
-  }
-});
+    startX = e.clientX - offsetX;
+    startY = e.clientY - offsetY;
 
-container.addEventListener('touchmove', (e) => {
-  e.preventDefault();
-
-  if (e.touches.length === 2) {
-    const distance = Math.hypot(
-      e.touches[0].clientX - e.touches[1].clientX,
-      e.touches[0].clientY - e.touches[1].clientY
-    );
-
-    scale = initialScale * (distance / initialDistance);
-    scale = Math.min(Math.max(scale, 1), 5);
-  } else if (e.touches.length === 1 && isDragging) {
-    originX = e.touches[0].clientX - startX;
-    originY = e.touches[0].clientY - startY;
-  }
-
-  applyTransform();
-});
-
-container.addEventListener('touchend', (e) => {
-  if (e.touches.length === 0) isDragging = false;
-});
-
-
-vergrootglazen.forEach(v => {
-  v.addEventListener('click', (e) => {
-    e.stopPropagation(); 
-
-    popupContent.innerText = v.dataset.info;
-    popup.classList.add('visible');
-
-    const rect = v.getBoundingClientRect();
-    popup.style.left = rect.left + window.scrollX + 'px';
-    popup.style.top = rect.top + window.scrollY + 'px';
+    wrapper.style.cursor = 'grabbing';
   });
-});
 
-document.addEventListener('click', (e) => {
-  if (isPopupOpen() && !popup.contains(e.target)) {
-    popup.classList.remove('visible');
-  }
-});
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
 
-function isPopupOpen() {
-  return popup.classList.contains('visible');
-}
+    offsetX = e.clientX - startX;
+    offsetY = e.clientY - startY;
 
-// Init
-updateVergrootglazen();
+    constrain();
+    requestUpdate();
+  });
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+    wrapper.style.cursor = 'grab';
+  });
+
+ 
+  let startDist = 0;
+  let startScale = 1;
+
+  wrapper.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+      startDist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      startScale = scale;
+    } else if (e.touches.length === 1 && scale > 1) {
+      isDragging = true;
+      startX = e.touches[0].clientX - offsetX;
+      startY = e.touches[0].clientY - offsetY;
+    }
+  });
+
+  wrapper.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+
+      scale = startScale * (dist / startDist);
+      scale = Math.max(minScale, Math.min(maxScale, scale));
+
+      requestUpdate();
+
+    } else if (isDragging && e.touches.length === 1) {
+
+      offsetX = e.touches[0].clientX - startX;
+      offsetY = e.touches[0].clientY - startY;
+
+      constrain();
+      requestUpdate();
+    }
+  }, { passive: false });
+
+  wrapper.addEventListener('touchend', () => {
+    isDragging = false;
+  });
 
 });
