@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById('plaat-container');
   const wrapper = document.getElementById('plaat-wrapper');
   const vergrootglazen = document.querySelectorAll('.vergrootglas');
+  const popup = document.getElementById('popup');
+  const popupContent = document.getElementById('popup-content');
 
   let scale = 1;
   const minScale = 1;
@@ -139,6 +141,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   wrapper.addEventListener('touchend', () => {
     isDragging = false;
+  });
+
+  vergrootglazen.forEach((v) => {
+    v.addEventListener('click', (e) => {
+      if (!popup || !popupContent) return;
+
+      e.stopPropagation();
+      popupContent.textContent = v.dataset.info || '';
+      popup.classList.add('visible');
+
+      const rect = v.getBoundingClientRect();
+      const margin = 12;
+      const popupWidth = popup.offsetWidth;
+      const popupHeight = popup.offsetHeight;
+
+      let left = rect.left + window.scrollX;
+      let top = rect.bottom + window.scrollY + 12;
+
+      const maxLeft = window.scrollX + window.innerWidth - popupWidth - margin;
+      const maxTop = window.scrollY + window.innerHeight - popupHeight - margin;
+
+      left = Math.max(window.scrollX + margin, Math.min(maxLeft, left));
+      top = Math.max(window.scrollY + margin, Math.min(maxTop, top));
+
+      popup.style.left = `${left}px`;
+      popup.style.top = `${top}px`;
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!popup) return;
+    if (popup.classList.contains('visible') && !popup.contains(e.target)) {
+      popup.classList.remove('visible');
+    }
   });
 
 });
