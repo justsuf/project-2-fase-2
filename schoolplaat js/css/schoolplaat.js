@@ -59,26 +59,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  wrapper.addEventListener('wheel', (e) => {
-    e.preventDefault();
+wrapper.addEventListener('wheel', (e) => {
+  e.preventDefault();
 
-    const zoomIntensity = 0.002;
-    const delta = -e.deltaY * zoomIntensity;
+  const zoomIntensity = 0.002;
+  const delta = -e.deltaY * zoomIntensity;
 
-    const prevScale = scale;
-    scale += delta;
-    scale = Math.max(minScale, Math.min(maxScale, scale));
+  const prevScale = scale;
+  scale += delta;
+  scale = Math.max(minScale, Math.min(maxScale, scale));
 
-    const rect = container.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
+  // Cursor positie relatief tot container inclusief offset
+  const rect = container.getBoundingClientRect();
+  const cursorX = e.clientX - rect.left;
+  const cursorY = e.clientY - rect.top;
 
-    offsetX -= (mx / prevScale - mx / scale);
-    offsetY -= (my / prevScale - my / scale);
+  // Pas offset aan zodat zoom rond cursor blijft
+  offsetX -= (cursorX) * (scale - prevScale) / scale;
+  offsetY -= (cursorY) * (scale - prevScale) / scale;
 
-    constrain();
-    requestUpdate();
-  }, { passive: false });
+  constrain();
+  requestUpdate();
+}, { passive: false });
 
 
   wrapper.addEventListener('mousedown', (e) => {
