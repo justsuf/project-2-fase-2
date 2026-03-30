@@ -1,4 +1,56 @@
 // Alyssa
+
+// Game
+let currentStep = 0;
+
+const steps = [
+  { item: "schep", zone: "kuil" },
+  { item: "stenen", zone: "vuur" },
+  { item: "doek", zone: "kuil" },
+  { item: "emmer", zone: "kuil" }
+];
+
+let draggedItem = "";
+
+// START DRAG
+document.querySelectorAll(".item").forEach(item => {
+  item.addEventListener("dragstart", function() {
+    draggedItem = this.id;
+  });
+});
+
+// DROP ZONES
+document.querySelectorAll(".zone").forEach(zone => {
+
+  zone.addEventListener("dragover", function(e) {
+    e.preventDefault();
+  });
+
+  zone.addEventListener("drop", function() {
+
+    let rightStep = steps[currentStep];
+
+    if (
+      draggedItem === rightStep.item &&
+      this.id === rightStep.zone
+    ) {
+      currentStep++;
+      document.getElementById("status").innerText = "Goed!";
+
+      if (currentStep === steps.length) {
+        document.getElementById("status").innerText =
+          "🎉 Je hebt de stoomkuil gemaakt!";
+      }
+
+    } else {
+      document.getElementById("status").innerText =
+        "❌ Fout! Opnieuw beginnen.";
+      currentStep = 0;
+    }
+
+  });
+});
+
 // Quizvragen activiteit 4
 const questions = [
     {
