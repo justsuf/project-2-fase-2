@@ -3,8 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById('plaat-container');
   const wrapper = document.getElementById('plaat-wrapper');
   const vergrootglazen = document.querySelectorAll('.vergrootglas');
+
   const popup = document.getElementById('popup');
   const popupContent = document.getElementById('popup-content');
+  const popupButton = document.getElementById('popup-button');
+  const popupClose = document.getElementById('popup-close');
+
+  let currentLink = "";
+
 
   let scale = 1;
   const minScale = 1;
@@ -19,10 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let ticking = false;
 
+
   function update() {
     container.style.transform =
       `translate3d(${offsetX}px, ${offsetY}px, 0) scale(${scale})`;
 
+    // Vergrootglazen schalen tegen zoom
     vergrootglazen.forEach(v => {
       v.style.transform = `scale(${1 / scale})`;
     });
@@ -36,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ticking = true;
     }
   }
+
 
   function constrain() {
     const rect = container.getBoundingClientRect();
@@ -71,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     requestUpdate();
   }, { passive: false });
 
- 
+
   wrapper.addEventListener('mousedown', (e) => {
     if (scale <= 1) return;
 
@@ -81,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     wrapper.style.cursor = 'grabbing';
   });
+
 
   document.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
@@ -92,12 +102,13 @@ document.addEventListener("DOMContentLoaded", () => {
     requestUpdate();
   });
 
+
   document.addEventListener('mouseup', () => {
     isDragging = false;
     wrapper.style.cursor = 'grab';
   });
 
- 
+
   let startDist = 0;
   let startScale = 1;
 
@@ -130,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
       requestUpdate();
 
     } else if (isDragging && e.touches.length === 1) {
-
       offsetX = e.touches[0].clientX - startX;
       offsetY = e.touches[0].clientY - startY;
 
@@ -143,36 +153,52 @@ document.addEventListener("DOMContentLoaded", () => {
     isDragging = false;
   });
 
+
   vergrootglazen.forEach((v) => {
     v.addEventListener('click', (e) => {
-      if (!popup || !popupContent) return;
-
       e.stopPropagation();
+
       popupContent.textContent = v.dataset.info || '';
+      currentLink = v.dataset.link || '';
+
       popup.classList.add('visible');
 
       const rect = v.getBoundingClientRect();
-      const margin = 12;
-      const popupWidth = popup.offsetWidth;
-      const popupHeight = popup.offsetHeight;
+      const margin = 10;
 
-      let left = rect.left + window.scrollX;
-      let top = rect.bottom + window.scrollY + 12;
+      let left = rect.right + margin;
+      let top = rect.top;
 
-      const maxLeft = window.scrollX + window.innerWidth - popupWidth - margin;
-      const maxTop = window.scrollY + window.innerHeight - popupHeight - margin;
+  
+      const maxLeft = window.scrollX + window.innerWidth - popup.offsetWidth - margin;
+      const minLeft = window.scrollX + margin;
+      left = Math.max(minLeft, Math.min(maxLeft, left));
 
-      left = Math.max(window.scrollX + margin, Math.min(maxLeft, left));
-      top = Math.max(window.scrollY + margin, Math.min(maxTop, top));
+   
+      const maxTop = window.scrollY + window.innerHeight - popup.offsetHeight - margin;
+      const minTop = window.scrollY + margin;
+      top = Math.max(minTop, Math.min(maxTop, top));
 
       popup.style.left = `${left}px`;
       popup.style.top = `${top}px`;
     });
   });
 
+
+  popupButton.addEventListener('click', () => {
+    if (currentLink) {
+      window.location.href = currentLink;
+    }
+  });
+
+
+  popupClose.addEventListener('click', () => {
+    popup.classList.remove('visible');
+  });
+
+
   document.addEventListener('click', (e) => {
-    if (!popup) return;
-    if (popup.classList.contains('visible') && !popup.contains(e.target)) {
+    if (!popup.contains(e.target)) {
       popup.classList.remove('visible');
     }
   });
