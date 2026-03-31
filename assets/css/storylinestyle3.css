@@ -1,0 +1,96 @@
+.img-fluid {
+    width: 69%;
+}
+
+.inventory-bar {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: none; 
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: 100px;
+}
+
+.item {
+    width: 120px;
+    height: 120px;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    border: none !important;
+    background: transparent !important;
+    outline: none !important;
+}
+
+.item:hover { transform: scale(1.1); }
+
+.game-icon {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    pointer-events: none; 
+    margin-bottom: 40px;
+}
+
+.game-scene {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('../../assets/images/sand_bg.jpg');
+    background-size: cover;
+    border: none; 
+}
+
+.zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: none !important; 
+    background: transparent !important;
+    outline: none !important;
+}
+
+#pit {
+    width: 350px;  
+    height: 250px; 
+}
+
+#fire {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 50px;
+}
+
+.zone-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    pointer-events: none;
+}
+
+.steam-animation {
+    position: absolute;
+    top: -50px;
+    width: 150px;
+    opacity: 0.8;
+    animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+    from { opacity: 0.4; transform: translateY(0); }
+    to { opacity: 0.8; transform: translateY(-10px); }
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
