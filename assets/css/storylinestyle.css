@@ -72,14 +72,14 @@
     position: fixed;
     left: 15px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-20%);
 }
 
 .storyline-btn-right {
     position: fixed;
     right: 15px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-20%);
 }
 
 /* Quiz styling */
