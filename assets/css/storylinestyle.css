@@ -1,26 +1,154 @@
+/* Algemene layout */
 .storyline-body {
     min-height: 100vh;
+    background-color: #d9c4a7;
 }
 
 .storyline-main {
-min-height: 0;
+    min-height: 0;
 }
 
+/* Titelbalk */
+.storyline-title-bar {
+    width: 70%;
+    background: #f5e1c1;
+    border: 3px solid #6e4a2b;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.storyline-title-bar h1 {
+    color: #4a2f16;
+    font-weight: 700;
+}
+
+/* Content box */
+.storyline-main > div {
+    background: #f5e1c1;
+    border: 3px solid #6e4a2b !important;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* Tekst gedeelte */
+#activity-1 p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Afbeeldingen */
+#activity-1 img {
+    border-radius: 12px;
+    border: 2px solid #6e4a2b;
+    transition: transform 0.3s ease;
+}
+
+#activity-1 img:hover {
+    transform: scale(1.05);
+}
+
+/* Navigatie knoppen links/rechts */
+.storyline-btn-left,
+.storyline-btn-right {
+    background-color: #7b4f2c;
+    color: #fff;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+.storyline-btn-left:hover,
+.storyline-btn-right:hover {
+    background-color: #5a371d;
+    transform: scale(1.1);
+}
+
+/* Posities */
 .storyline-btn-left {
     position: fixed;
-    left: 10px;
+    left: 15px;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .storyline-btn-right {
     position: fixed;
-    right: 10px;
+    right: 15px;
     top: 50%;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
 }
 
-.storyline-title-bar {
-    width: 70%;
+/* Quiz styling */
+#quiz-question h4 {
+    color: #4a2f16;
+    font-weight: 600;
 }
 
+#answer-options button {
+    background-color: #7b4f2c;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+#answer-options button:hover {
+    background-color: #5a371d;
+    transform: scale(1.03);
+}
+
+/* Resultaat */
+#quiz-results h3 {
+    color: #4a2f16;
+}
+
+#btn-to-choice {
+    background-color: #7b4f2c;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: all 0.2s ease;
+}
+
+#btn-to-choice:hover {
+    background-color: #5a371d;
+    transform: scale(1.05);
+}
+
+/* Keuze knoppen */
+#quiz-choice button,
+#quiz-choice a {
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* Video & spel placeholder */
+#activity-2,
+#activity-3 {
+    font-size: 1.5rem;
+    color: #4a2f16;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .storyline-title-bar {
+        width: 90%;
+    }
+
+    #activity-1 .col-8,
+    #activity-1 .col-4 {
+        width: 100%;
+    }
+
+    .storyline-btn-left,
+    .storyline-btn-right {
+        padding: 10px 12px;
+        font-size: 1rem;
+    }
+}
