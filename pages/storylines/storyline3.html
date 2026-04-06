@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <title>Verhaal # | Veluwse heuvels</title>
+    <title>Verhaal Stoomkuilen | Veluwse heuvels</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no " />
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/storylinestyle.css">
+    <link rel="stylesheet" href="../../assets/css/storylinestyle3.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
@@ -34,7 +35,7 @@
 
     <!-- Titel verhaallijn -->
     <div class="storyline-title-bar text-center py-2 border mx-auto mt-3">
-        <h1 class="h4 mb-0">Verhaallijn titel</h1>
+        <h1 class="h4 mb-0">Stoomkuilen</h1>
     </div>
 
     <!-- MAIN -->
@@ -43,29 +44,71 @@
             <!-- Activiteit 1: Tekst -->
             <div id="activity-1" class="row h-100">
                 <div class="col-8 border-end">
-                    <p>Tekst placeholder</p>
+                    <p>
+                        Lang geleden, in de bronstijd, maakten mensen kuilen bij een grafheuvel in Apeldoorn. In deze kuilen legden ze gebroken stenen en aardewerk.
+                        <br><br>
+                        De stenen waren eerst heel erg heet gemaakt, soms wel boven de 540 graden. Daarna kwamen ze in de kuilen. Als er water bij kwam, ontstond er stoom en een soort mist.
+                        <br><br>
+                        De kuilen lagen in een rechte lijn en hoorden bij de grafheuvel. Archeologen denken dat dit een ritueel was, een speciale handeling met een betekenis. Misschien wilden de mensen zo iets doen voor de overledenen.
+                        <br><br>
+                        We weten nog niet precies waarom ze dit deden, maar het was een belangrijk en bijzonder gebruik.
+                    </p>
                 </div>
                 <div class="col-4 d-flex flex-column gap-3">
                     <div class="bg-light border flex-fill d-flex align-items-center justify-content-center">
-                        <img src="https://placehold.co/300x200" alt="Afbeelding 1" class="img-fluid rounded">
+                        <img src="../../assets/images/Stoomkuil1.jpg" alt="Stoomkuil 1" class="img-fluid rounded">
                     </div>
                     <div class="bg-light border flex-fill d-flex align-items-center justify-content-center">
-                        <img src="https://placehold.co/300x200" alt="Afbeelding 2" class="img-fluid rounded">
+                        <img src="../../assets/images/Stoomkuil2.jpg" alt="Stoomkuil 2" class="img-fluid rounded">
                     </div>
                 </div>
             </div>
 
             <!-- Activiteit 2: Video -->
-            <div id="activity-2" class="row h-100 d-none">
-                <div class="col-12 d-flex align-items-center justify-content-center">
-                    <p>Video komt hier</p>
+            <div id="activity-2" class="row h-100">
+                <div class="col-12 col-md-8 mx-auto p-3"> 
+                    <div class="ratio ratio-16x9">
+                        <iframe 
+                            src="https://www.youtube.com/embed/_rDvW3KW2NQ?si=MomHd69P0vIIIpSF" 
+                            title="Stoomkuilen" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
                 </div>
             </div>
 
             <!-- Activiteit 3: Spel -->
             <div id="activity-3" class="row h-100 d-none">
-                <div class="col-12 d-flex align-items-center justify-content-center">
-                    <p>Spel komt hier</p>
+                <div class="col-12 d-flex flex-column align-items-center">
+                    
+                    <div class="inventory-bar d-flex justify-content-center gap-4 p-3 mb-4 w-100">
+                        <div class="item" draggable="true" id="spade">
+                            <img src="../../assets/images/schep.png" alt="Schep" class="game-icon">
+                        </div>
+                        <div class="item" draggable="true" id="stones">
+                            <img src="../../assets/images/steen.png" alt="Stenen" class="game-icon">
+                            </div>
+                        <div class="item" draggable="true" id="bucket">
+                            <img src="../../assets/images/emmer.png" alt="Emmer" class="game-icon">
+                        </div>
+                    </div>
+
+                    <div class="game-scene">
+                        <div class="zone" id="pit">
+                            <img src="../../assets/images/dirt.png" alt="Grond" class="zone-img" id="pit-img">
+                            <div id="steam-effect" class="d-none">
+                                <img src="../../assets/images/steam.png" class="steam-animation">
+                            </div>
+                        </div>
+
+                        <div class="zone" id="fire">
+                            <img src="../../assets/images/campfire.png" alt="Vuur" class="zone-img" id="fire-img">
+                        </div>
+                    </div>
+
+                    <p id="status" class="mt-3 fs-5 fw-bold text-muted text-center">
+                        Sleep de juiste items in de juiste volgorde
+                    </p>
                 </div>
             </div>
             <div id="activity-4" class="row h-100 d-none">
