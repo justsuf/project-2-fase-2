@@ -12,8 +12,8 @@
 .storyline-title-bar {
     width: 70%;
     background: #f5e1c1;
-    border: 3px solid #6e4a2b;
-    border-radius: 15px;
+    border: 3px solid #6e4a2b !important;
+    border-radius: 100px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
@@ -38,9 +38,8 @@
 
 /* Afbeeldingen */
 #activity-1 img {
-    border-radius: 12px;
-    border: 2px solid #6e4a2b;
     transition: transform 0.3s ease;
+    object-fit: cover;
 }
 
 #activity-1 img:hover {

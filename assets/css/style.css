@@ -102,35 +102,3 @@ footer small {
 main {
     padding-bottom: 100px; /* voorkomt overlap met fixed footer */
 }
-
-/* Storyline 3 game */
-.game-container {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
-
-.items, .zones {
-  width: 40%;
-}
-
-.item {
-  padding: 15px;
-  margin: 10px;
-  background: #ddd;
-  cursor: grab;
-}
-
-.zone {
-  height: 100px;
-  margin: 20px;
-  border: 2px dashed #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#status {
-  margin-top: 20px;
-  font-weight: bold;
-}
