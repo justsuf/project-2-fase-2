@@ -1,0 +1,51 @@
+/* Alleen schoolplaat en spel verbergen bij start */
+#spel {
+    display: none;
+    text-align: center;
+}
+
+/* Dropzone zonder afbeelding */
+#spel #dropzone {
+    width: 300px;
+    height: 150px;
+    border: 3px dashed brown;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f5deb3; /* lichte kleur zodat het zichtbaar is */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #654321;
+    overflow: hidden;
+}
+
+/* Items container */
+#spel #items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Draggable items */
+#spel .draggable {
+    width: 80px;           /* vaste breedte */
+    height: 80px;          /* vaste hoogte */
+    object-fit: contain;   /* houdt verhoudingen goed */
+    cursor: grab;
+    transition: transform 0.2s;
+}
+
+/* Hover effect voor items */
+#spel .draggable:hover {
+    transform: scale(1.2);
+}
+
+/* Feedback */
+#spel #feedback {
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+}
