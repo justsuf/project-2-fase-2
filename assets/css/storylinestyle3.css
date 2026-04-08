@@ -43,7 +43,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-image: url('../../assets/images/sand_bg.jpg');
+    background-image: url('../../assets/images/storyline3/dirt-bg.jpg');
     background-size: cover;
     border: none; 
 }
@@ -79,9 +79,10 @@
 
 .steam-animation {
     position: absolute;
-    top: -50px;
-    width: 150px;
-    opacity: 0.8;
+    top: -20px;
+    left: 30px;
+    width: 300px;
+    opacity: 1;
     animation: flicker 2s infinite alternate;
 }
 

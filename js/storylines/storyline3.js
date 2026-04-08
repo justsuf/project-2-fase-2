@@ -50,12 +50,12 @@ document.querySelectorAll(".zone").forEach(zone => {
       statusEl.className = "text-success fw-bold mt-3 fs-5";
       
       if (draggedItem === "spade") {
-          document.getElementById("pit-img").src = "../../assets/images/kuil.png";
+          document.getElementById("pit-img").src = "../../assets/images/storyline3/kuil.png";
           draggedElement.style.display = "none"; 
       }
       
       if (draggedItem === "stones" && currentStep === 2) {
-          document.getElementById("stones").querySelector("img").src = "../../assets/images/hete_steen.png";          
+          document.getElementById("stones").querySelector("img").src = "../../assets/images/storyline3/hete_steen.png";          
           statusEl.innerText = "De stenen worden heet! Verplaats ze nu naar de kuil.";
       }
       
