@@ -3,7 +3,9 @@ html, body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background-color: #333;
+  /* Veranderd naar de Veluwe zandkleur voor een mooiere overgang bij uitzoomen */
+  background-color: #d9c4a7; 
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 :root {
@@ -36,16 +38,17 @@ html, body {
   -webkit-user-drag: none;
 }
 
-
+/* --- De Vergrootglazen --- */
 .vergrootglas {
   position: absolute;
   width: calc(10px * var(--ui-scale));
   height: calc(10px * var(--ui-scale));
   font-size: calc(5px * var(--ui-scale));
 
-  background-color: rgba(255, 255, 255, 0.9);
+  /* Veluwe kleuren toegepast */
+  background-color: rgba(245, 230, 200, 0.9); 
   border-radius: 50%;
-  border: calc(1px * var(--ui-scale)) solid #333;
+  border: calc(1px * var(--ui-scale)) solid #7a5230;
 
   display: flex;
   align-items: center;
@@ -58,27 +61,28 @@ html, body {
 }
 
 .vergrootglas:hover {
-  background-color: #ffd54f;
+  background-color: #9bbf6b; /* De groene kleur uit je navbar */
   transform: scale(1.2);
 }
 
-
+/* --- De Popup (Aangepast naar jouw wensen) --- */
 .popup {
-  position: absolute;
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  width: 250px;
+  position: absolute; /* De JS berekent de exacte positie */
+  background: #f5e1c1; /* De lichtere zandkleur */
+  border: 3px solid #6e4a2b; /* Donkerbruine rand */
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  color: #3b2a1a;
 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 
   opacity: 0;
   pointer-events: none;
   transform: scale(0.9);
 
-  transition: 0.2s ease;
-
-  z-index: 1000;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 2000; /* Hoger dan de rest */
 }
 
 .popup.visible {
@@ -87,37 +91,47 @@ html, body {
   transform: scale(1);
 }
 
-
+/* Het sluitkruisje */
 #popup-close {
   position: absolute;
   top: 8px;
-  right: 8px;
+  right: 12px;
   border: none;
   background: none;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
-}
-
-
-#popup-content {
-  margin-bottom: 12px;
-  font-size: 14px;
-  line-height: 1.4;
-  white-space: pre-line;
-}
-
-
-#popup-button {
-  width: 100%;
-  padding: 8px;
-  border: none;
-  background: #2196f3;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+  color: #6e4a2b;
   font-weight: bold;
 }
 
+#popup-close:hover {
+  color: #a00;
+}
+
+/* De tekst in de popup */
+#popup-content {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-line; /* CRUCIAAL: behoudt enters uit je data-info */
+}
+
+/* De 'Ga naar verhaal' knop */
+#popup-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #7b4f2c; /* Het bruin van je startBtn */
+  color: #f5e6c8;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease;
+}
+
 #popup-button:hover {
-  background: #1976d2;
+  background: #5a371d; /* Donkerder bruin bij hover */
 }
