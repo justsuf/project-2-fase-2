@@ -27,3 +27,37 @@ const questions = [
         correct: 1
     }
 ];
+
+let juisteVolgorde = ["vuur", "offer", "stenen"];
+let huidigeStap = 0;
+
+// Start scherm tonen
+document.getElementById("schoolplaat").style.display = "block";
+
+function startSpel() {
+    document.getElementById("schoolplaat").style.display = "none";
+    document.getElementById("spel").style.display = "block";
+}
+
+function checkStap(stap) {
+    if (stap === juisteVolgorde[huidigeStap]) {
+        huidigeStap++;
+        document.getElementById("feedback").innerText = "Goed!";
+    } else {
+        document.getElementById("feedback").innerText = "Verkeerd, probeer opnieuw.";
+        huidigeStap = 0;
+    }
+
+    if (huidigeStap === juisteVolgorde.length) {
+        document.getElementById("spel").style.display = "none";
+        document.getElementById("vragen").style.display = "block";
+    }
+}
+
+function antwoord(isGoed) {
+    if (isGoed) {
+        document.getElementById("resultaat").innerText = "Correct!";
+    } else {
+        document.getElementById("resultaat").innerText = "Niet juist.";
+    }
+}

@@ -67,6 +67,144 @@
                 <div class="col-12 d-flex align-items-center justify-content-center">
                     <p>Spel komt hier</p>
                 </div>
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Grafheuvel Ritueel Spel</title>
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    background-color: #f4f1e6;
+}
+
+#schoolplaat, #spel, #vragen {
+    display: none;
+}
+
+#dropzone {
+    width: 300px;
+    height: 200px;
+    border: 3px dashed brown;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #d2b48c;
+}
+
+.draggable {
+    width: 80px;
+    margin: 10px;
+    cursor: grab;
+}
+
+#items {
+    display: flex;
+    justify-content: center;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- SCHOOLPLAAT -->
+<div id="schoolplaat">
+    <h1>Grafheuvel Ritueel</h1>
+    <p>Sleep de juiste rituelen naar de grafheuvel</p>
+    <button onclick="startSpel()">Start spel</button>
+</div>
+
+<!-- SPEL -->
+<div id="spel">
+    <h2>Sleep de rituelen in de juiste volgorde</h2>
+
+    <!-- Dropzone -->
+    <div id="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)">
+        Grafheuvel
+    </div>
+
+    <!-- Items -->
+    <div id="items">
+        <!-- VERVANG deze src met jouw plaatjes -->
+        <img src="vuur.png" id="vuur" class="draggable" draggable="true" ondragstart="drag(event)">
+        <img src="offer.png" id="offer" class="draggable" draggable="true" ondragstart="drag(event)">
+        <img src="stenen.png" id="stenen" class="draggable" draggable="true" ondragstart="drag(event)">
+    </div>
+
+    <p id="feedback"></p>
+</div>
+
+<!-- VRAGEN -->
+<div id="vragen">
+    <h2>Vragenronde</h2>
+    <p>Waarom werden grafheuvels gebouwd?</p>
+
+    <button onclick="antwoord(true)">Voor begrafenis en herdenking</button>
+    <button onclick="antwoord(false)">Voor sportwedstrijden</button>
+
+    <p id="resultaat"></p>
+</div>
+
+<script>
+let juisteVolgorde = ["vuur", "offer", "stenen"];
+let huidigeStap = 0;
+
+// Start scherm
+document.getElementById("schoolplaat").style.display = "block";
+
+function startSpel() {
+    document.getElementById("schoolplaat").style.display = "none";
+    document.getElementById("spel").style.display = "block";
+}
+
+// Drag functies
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    let data = ev.dataTransfer.getData("text");
+
+    if (data === juisteVolgorde[huidigeStap]) {
+        huidigeStap++;
+        document.getElementById("feedback").innerText = "Goed gedaan!";
+        
+        // Item verplaatsen naar dropzone
+        ev.target.appendChild(document.getElementById(data));
+    } else {
+        document.getElementById("feedback").innerText = "Verkeerde volgorde!";
+        huidigeStap = 0;
+    }
+
+    if (huidigeStap === juisteVolgorde.length) {
+        document.getElementById("feedback").innerText = "Ritueel compleet!";
+        setTimeout(() => {
+            document.getElementById("spel").style.display = "none";
+            document.getElementById("vragen").style.display = "block";
+        }, 1000);
+    }
+}
+
+// Vraag
+function antwoord(isGoed) {
+    if (isGoed) {
+        document.getElementById("resultaat").innerText = "Correct!";
+    } else {
+        document.getElementById("resultaat").innerText = "Niet juist.";
+    }
+}
+</script>
+
+</body>
+</html>
             </div>
             <div id="activity-4" class="row h-100 d-none">
 
