@@ -1,0 +1,291 @@
+.dressup-game {
+	--veluwe-cream: #f5e1c1;
+	--veluwe-brown: #7b4f2c;
+	--veluwe-brown-dark: #5a371d;
+	--veluwe-border: #6e4a2b;
+	--veluwe-text: #3b2a1a;
+	--veluwe-green: #9bbf6b;
+	border: none;
+	border-radius: 12px;
+	background: transparent;
+	padding: 1rem;
+	color: var(--veluwe-text);
+}
+
+body.storyline-body {
+	height: 100vh;
+	overflow: hidden;
+}
+
+body.storyline-body main.storyline-main {
+	padding-bottom: 0;
+	overflow: hidden;
+}
+
+body.storyline-body main.storyline-main > div {
+	height: 100%;
+	min-height: 0;
+}
+
+#activity-1 .border-end {
+	overflow: auto;
+}
+
+#activity-3 {
+	align-items: center;
+}
+
+#activity-3 .col-12 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#activity-3 .dressup-game {
+	width: 100%;
+}
+
+.storyline2-image-frame {
+	height: clamp(250px, 36vh, 360px);
+	width: 100%;
+	padding: 0.35rem;
+}
+
+.storyline2-image-frame img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+#activity-1 .col-lg-5 > .row {
+	--bs-gutter-x: 0.5rem;
+}
+
+.dressup-layout {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	gap: 1rem;
+	align-items: stretch;
+}
+
+.dressup-side {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.75rem;
+}
+
+.dressup-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 0;
+}
+
+.dressup-stage {
+	border: 2px solid var(--veluwe-border);
+	border-radius: 12px;
+	background: linear-gradient(180deg, #fff6e8 0%, #f7ead2 100%);
+	padding: 0.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.model-btn.is-active,
+.dressup-item.is-active {
+	border-color: var(--veluwe-green);
+	box-shadow: 0 0 0 2px rgba(155, 191, 107, 0.35);
+}
+
+.dressup-model-switch {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.dressup-model-switch .model-btn {
+	border: 2px solid var(--veluwe-border);
+	color: var(--veluwe-text);
+	background: #fff4df;
+	font-weight: 700;
+}
+
+.dressup-model-switch .model-btn:hover {
+	background: #f2dfbf;
+	border-color: var(--veluwe-brown);
+}
+
+.dressup-model-switch .model-btn.is-active {
+	background: var(--veluwe-brown);
+	color: #fff7ea;
+	border-color: var(--veluwe-brown-dark);
+}
+
+.dressup-character {
+	position: relative;
+	width: min(100%, 280px);
+	aspect-ratio: 2 / 3;
+	border: 2px dashed var(--veluwe-border);
+	border-radius: 16px;
+	background: linear-gradient(180deg, #f9f0dc 0%, #fff9ee 100%);
+	overflow: hidden;
+}
+
+.dressup-character::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(circle at 50% 10%, rgba(123, 79, 44, 0.08), transparent 45%);
+	pointer-events: none;
+}
+
+.dressup-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.45rem;
+	border-radius: 10px;
+	border: 1px solid #9a7455;
+	background: #fff7ea;
+	cursor: pointer;
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dressup-item:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 10px rgba(74, 47, 22, 0.2);
+	border-color: var(--veluwe-brown);
+}
+
+.dressup-item-image {
+	display: block;
+	width: 100%;
+	max-width: 90px;
+	aspect-ratio: 1 / 1;
+	height: auto;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.dressup-item-label {
+	font-size: 0.85rem;
+	font-weight: 700;
+	color: #4a2f16;
+}
+
+.character-layer {
+	position: absolute;
+	inset: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	pointer-events: none;
+}
+
+.layer-base {
+	z-index: 1;
+}
+
+.layer-bottom {
+	z-index: 2;
+}
+
+.layer-shoes {
+	z-index: 3;
+}
+
+.layer-accessory {
+	z-index: 4;
+}
+
+.layer-arm {
+	z-index: 4;
+}
+
+.layer-top {
+	z-index: 5;
+}
+
+.layer-neck {
+	z-index: 5;
+}
+
+.layer-jacket {
+	z-index: 6;
+}
+
+.layer-head {
+	z-index: 7;
+}
+
+#dressup-reset {
+	background-color: var(--veluwe-brown) !important;
+	border: none !important;
+	color: #fff7ea !important;
+	font-weight: 700;
+}
+
+#dressup-reset:hover {
+	background-color: var(--veluwe-brown-dark) !important;
+}
+
+@media (min-width: 992px) {
+	.dressup-layout {
+		grid-template-columns: minmax(520px, 1.6fr) minmax(320px, 1fr);
+		grid-template-areas:
+			"left model"
+			"right model";
+		align-items: stretch;
+	}
+
+	.dressup-side-left {
+		grid-area: left;
+		grid-template-columns: repeat(4, minmax(80px, 1fr));
+	}
+
+	.dressup-side-right {
+		grid-area: right;
+		grid-template-columns: repeat(4, minmax(80px, 1fr));
+	}
+
+	.dressup-center {
+		grid-area: model;
+		justify-content: center;
+		height: 100%;
+	}
+
+	.dressup-stage {
+		height: 100%;
+		min-height: 420px;
+	}
+
+	.dressup-character {
+		width: min(100%, 340px);
+	}
+}
+
+@media (max-width: 991px) {
+	.dressup-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.dressup-side {
+		grid-template-columns: repeat(4, minmax(70px, 1fr));
+	}
+
+	.dressup-stage {
+		padding: 0.5rem;
+	}
+
+	.dressup-center {
+		order: -1;
+	}
+}
+
+@media (max-width: 575px) {
+	.dressup-side {
+		grid-template-columns: repeat(2, minmax(70px, 1fr));
+	}
+}
