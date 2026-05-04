@@ -29,9 +29,9 @@ const questions = [
 
 // DIEREN SPEL
 let animals = [
-    { name: "wolf", sound: "../../freesound_community-wolf-howl-6310.mp3", done: false },
-    { name: "schaap", sound: "../../freesound_community-sheep-3-89230.mp3", done: false },
-    { name: "koe", sound: "../../u_jd81cxyq22-cow-mooing-343423.mp3", done: false }
+    { name: "wolf", sound: "../../assets/sounds/freesound_community-wolf-howl-6310.mp3", done: false },
+    { name: "schaap", sound: "../../assets/sounds/freesound_community-sheep-3-89230.mp3", done: false },
+    { name: "koe", sound: "../../assets/sounds/u_jd81cxyq22-cow-mooing-343423.mp3", done: false }
 ];
 
 let currentAnimal = null;
